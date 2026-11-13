@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+
+[x-cloak] {
+    display: none !important;
+}
+
+/* Global SVG sizing enforcement for sidebar and navbar */
+aside svg,
+nav svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    flex-shrink: 0 !important;
+}
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../../vendor/wireui/wireui/resources/views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer base {
+    :where(input:not([type='checkbox']):not([type='radio']), select, textarea) {
+        width: 100%;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 0.5rem !important;
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
+    }
+
+    select,
+    select option,
+    option {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+    }
+
+    :where(input:not([type='checkbox']):not([type='radio']), select, textarea)::placeholder {
+        color: var(--color-slate-400);
+    }
+
+    :where(input:not([type='checkbox']):not([type='radio']), select, textarea):focus {
+        border-color: var(--color-indigo-500);
+        outline: none;
+        box-shadow: 0 0 0 3px rgb(99 102 241 / 0.16);
+    }
+
+    input[placeholder*='Search'] {
+        padding-inline-start: 2.5rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Ccircle cx='10.8' cy='10.8' r='6.3' stroke-width='1.8'/%3E%3Cpath stroke-linecap='round' stroke-width='1.8' d='m15.5 15.5 4 4'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: 0.75rem center;
+        background-size: 1rem;
+    }
+
+    [dir='rtl'] input[placeholder*='Search'] {
+        background-position: calc(100% - 0.75rem) center;
+    }
+
+}
+
+select,
+select option,
+option {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+}
+
+.fixed.inset-0.z-50 > div > div[class*='bg-white'],
+[role='dialog'] {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+}
+
+.fixed.inset-0.z-50 > div > div[class*='bg-white'] [class*='dark:bg-slate-'],
+[role='dialog'] [class*='dark:bg-slate-'] {
+    background-color: #f8fafc !important;
+}
+
+.fixed.inset-0.z-50 > div > div[class*='bg-white'] [class*='dark:text-white'],
+[role='dialog'] [class*='dark:text-white'] {
+    color: #0f172a !important;
+}
+
+.fixed.inset-0.z-50 > div > div[class*='bg-white'] [class*='dark:text-slate-'],
+[role='dialog'] [class*='dark:text-slate-'] {
+    color: #334155 !important;
+}
+
+[data-loading] {
+    cursor: progress !important;
+    opacity: 0.72;
+    pointer-events: none;
+}
+
+button[data-loading]::after {
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-inline-start: 0.5rem;
+    border: 2px solid currentColor;
+    border-inline-end-color: transparent;
+    border-radius: 9999px;
+    animation: ims-spin 0.7s linear infinite;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes ims-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
